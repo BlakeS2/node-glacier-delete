@@ -9,6 +9,8 @@ var vaultName = ""
 var accountId = "-"
 var ageLimit = 91
 
+var counter = 0;
+//Todo: make customizing date formate and file name easy
 
 fs.readdir(dirName, function(err, data) {
     if(err) throw err;
@@ -19,11 +21,15 @@ fs.readdir(dirName, function(err, data) {
 
         fs.readFile(dirName + '\\' + file, 'utf16le', function(err, contents) {
             var duration = moment().diff(moment(parsePath(file).name, "DDMMMYY"), 'days');
-            var  id = JSON.parse(contents.substr(1))['archiveId']
+            var  id = JSON.parse(contents.substr(1))['archiveId'];
             if(duration >= ageLimit) {
                 deleteCmdString = `aws glacier delete-archive --account-id ${accountId} --vault-name ${vaultName} --archive-id ${id}`;
-                childProc.exec(deleteCmdString);
+                //childProc.execSync(deleteCmdString);
                 //console.log(deleteCmdString);
+
+                counter++;
+                console.log(counter);
+
             }else{
                 console.log("Not Yet");
                 }
