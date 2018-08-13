@@ -66,7 +66,7 @@ fs.readdir(dirName, function(err, data) {
                 var logFileDateName = moment();
                 //console.log(logFileDateName);
 
-                // generates a lof file of the deleted backup with a name of current time and contents including date, archiveId, and the number of deletions to this point
+                // generates a log file of the deleted backup with a name of current time and contents including date, archiveId, and the number of deletions to this point
                 fs.writeFile(deleteLogsDir + logFileDateName + ".txt" , `Deleted: ${counter} \n ArchiveId: ${id} \n Date: ${moment().format('MMMM Do YYYY, h:mm:ss a')}`, (err) => {
                     if (err) throw err;
                    // console.log('The log file has been saved!');
