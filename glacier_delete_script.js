@@ -9,15 +9,15 @@ const childProc = require('child_process');
 const parsePath = require('parse-filepath');
 const moment = require('moment');
 
-// directory where log with archiveId are located
+// directory where logs with archiveId are located
 var dirName = ""
-// date formate of log file names
+// date format of log file names
 var dateFormat = "DDMMMYY"
 // glacier vault name
 var vaultName = ""
 // aws account id
 var accountId = "-"
-//older than this will be deleted
+//archives older than this will be deleted
 var ageLimit = 91
 //directory to log deletions at
 var deleteLogsDir = ""
